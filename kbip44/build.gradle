@@ -18,7 +18,7 @@ test {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    testImplementation "org.assertj:assertj-core:3.14.0"
+    testImplementation "org.assertj:assertj-core:3.19.0"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     testRuntime "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
 
