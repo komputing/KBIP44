@@ -23,8 +23,8 @@ data class BIP44(val path: List<BIP44Element>) {
             .filter { it.isNotEmpty() }
             .map {
                 BIP44Element(
-                        hardened = it.contains("'"),
-                        number = it.replace("'", "").toIntOrNull()
+                        hardened = it.endsWith("'"),
+                        number = it.removeSuffix("'").toIntOrNull()
                                 ?: throw IllegalArgumentException("not a number $it")
                 )
             }
