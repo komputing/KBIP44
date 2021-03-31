@@ -3,7 +3,7 @@ apply from: 'https://raw.githubusercontent.com/ligi/gradle-common/master/version
 buildscript {
     ext {
         kotlin_version = '1.4.32'
-        khex_version = '0.6'
+        khex_version = '1.1.0'
         khash_version = '1.0.0-RC5'
         jupiter_version = '5.7.1'
     }
