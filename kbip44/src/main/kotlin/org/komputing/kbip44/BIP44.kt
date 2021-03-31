@@ -10,7 +10,7 @@ private fun getEnsuredCleanPath(path: String): String {
     if (!path.trim().startsWith("m/")) {
         throw (IllegalArgumentException("Must start with m/"))
     }
-    return path.replace("m/", "").replace(" ", "")
+    return path.removePrefix("m/").replace(" ", "")
 }
 
 data class BIP44Element(val hardened: Boolean, val number: Int) {
