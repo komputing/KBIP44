@@ -5,12 +5,13 @@ BIP44 as in https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki
  */
 
 const val BIP44_HARDENING_FLAG = 0x80000000.toInt()
+const val BIP44_PREFIX = "m/"
 
 private fun getEnsuredCleanPath(path: String): String {
-    if (!path.trim().startsWith("m/")) {
-        throw (IllegalArgumentException("Must start with m/"))
+    if (!path.trim().startsWith(BIP44_PREFIX)) {
+        throw (IllegalArgumentException("Must start with $BIP44_PREFIX"))
     }
-    return path.removePrefix("m/").replace(" ", "")
+    return path.removePrefix(BIP44_PREFIX).replace(" ", "")
 }
 
 data class BIP44Element(val hardened: Boolean, val number: Int) {
@@ -31,7 +32,7 @@ data class BIP44(val path: List<BIP44Element>) {
 
     override fun equals(other: Any?) = (other as? BIP44)?.path == path
     override fun hashCode() = path.hashCode()
-    override fun toString() = "m/" + path.joinToString("/") {
+    override fun toString() = BIP44_PREFIX + path.joinToString("/") {
         if (it.hardened) "${it.number}'" else "${it.number}"
     }
 
