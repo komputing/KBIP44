@@ -20,7 +20,6 @@ data class BIP44Element(val hardened: Boolean, val number: Int) {
 data class BIP44(val path: List<BIP44Element>) {
     constructor(path: String) : this(getEnsuredCleanPath(path).split("/")
             .asSequence()
-            .filter { it.isNotEmpty() }
             .map {
                 BIP44Element(
                         hardened = it.endsWith("'"),

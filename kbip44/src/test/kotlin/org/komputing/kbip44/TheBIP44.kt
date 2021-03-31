@@ -28,6 +28,13 @@ class TheBIP44 {
         }
     }
 
+    @Test
+    fun parsingFailsForMissingNumber() {
+        assertThrows(IllegalArgumentException::class.java){
+            BIP44("m/0/")
+        }
+    }
+
     val stringProbes = mapOf(
             "m/0" to listOf(BIP44Element(false, 0)),
             "m/0/1" to listOf(BIP44Element(false, 0), BIP44Element(false, 1)),
