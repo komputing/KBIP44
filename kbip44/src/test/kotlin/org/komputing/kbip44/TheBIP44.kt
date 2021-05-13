@@ -20,14 +20,6 @@ class TheBIP44 {
         }
     }
 
-
-    @Test
-    fun parsingFailsForPseudoCorrect() {
-        assertThrows(IllegalArgumentException::class.java){
-            BIP44("m")
-        }
-    }
-
     @Test
     fun parsingFailsForMissingNumber() {
         assertThrows(IllegalArgumentException::class.java){
@@ -36,6 +28,7 @@ class TheBIP44 {
     }
 
     val stringProbes = mapOf(
+            "m" to listOf(),
             "m/0" to listOf(BIP44Element(false, 0)),
             "m/0/1" to listOf(BIP44Element(false, 0), BIP44Element(false, 1)),
 
@@ -45,6 +38,7 @@ class TheBIP44 {
 
 
     val intProbes = mapOf(
+            "m" to listOf(),
             "m/0" to listOf(0),
             "m/0/1" to listOf(0, 1),
 
